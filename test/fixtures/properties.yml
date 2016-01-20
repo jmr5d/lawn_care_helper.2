@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address1: MyString
+  address2: MyString
+  city: MyString
+  state: MyString
+  latitude: 9.99
+  longitude: 9.99
+  altitude: 9.99
+  country: MyString
+  zipcode: MyString
+  user_id: 
+  size_in_acres: 9.99
+  length_in_feet: 9.99
+  width_in_feet: 9.99
+
+two:
+  address1: MyString
+  address2: MyString
+  city: MyString
+  state: MyString
+  latitude: 9.99
+  longitude: 9.99
+  altitude: 9.99
+  country: MyString
+  zipcode: MyString
+  user_id: 
+  size_in_acres: 9.99
+  length_in_feet: 9.99
+  width_in_feet: 9.99
