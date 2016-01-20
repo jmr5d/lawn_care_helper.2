@@ -29,6 +29,7 @@ class ContractsController < ApplicationController
   # POST /contracts.json
   def create
     @contract = Contract.new(contract_params)
+    @contract.user = current_user
 
     respond_to do |format|
       if @contract.save
