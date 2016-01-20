@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address1:</strong>
+  <%= @property.address1 %>
+</p>
+
+<p>
+  <strong>Address2:</strong>
+  <%= @property.address2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @property.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @property.state %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @property.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @property.longitude %>
+</p>
+
+<p>
+  <strong>Altitude:</strong>
+  <%= @property.altitude %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @property.country %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @property.zipcode %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @property.user %>
+</p>
+
+<p>
+  <strong>Size in acres:</strong>
+  <%= @property.size_in_acres %>
+</p>
+
+<p>
+  <strong>Length in feet:</strong>
+  <%= @property.length_in_feet %>
+</p>
+
+<p>
+  <strong>Width in feet:</strong>
+  <%= @property.width_in_feet %>
+</p>
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>

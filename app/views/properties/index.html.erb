@@ -1,0 +1,49 @@
+<h1>Listing properties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address1</th>
+      <th>Address2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Altitude</th>
+      <th>Country</th>
+      <th>Zipcode</th>
+      <th>User</th>
+      <th>Size in acres</th>
+      <th>Length in feet</th>
+      <th>Width in feet</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @properties.each do |property| %>
+      <tr>
+        <td><%= property.address1 %></td>
+        <td><%= property.address2 %></td>
+        <td><%= property.city %></td>
+        <td><%= property.state %></td>
+        <td><%= property.latitude %></td>
+        <td><%= property.longitude %></td>
+        <td><%= property.altitude %></td>
+        <td><%= property.country %></td>
+        <td><%= property.zipcode %></td>
+        <td><%= property.user %></td>
+        <td><%= property.size_in_acres %></td>
+        <td><%= property.length_in_feet %></td>
+        <td><%= property.width_in_feet %></td>
+        <td><%= link_to 'Show', property %></td>
+        <td><%= link_to 'Edit', edit_property_path(property) %></td>
+        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Property', new_property_path %>

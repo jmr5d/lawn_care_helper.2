@@ -1,0 +1,1 @@
+json.extract! @property, :id, :address1, :address2, :city, :state, :latitude, :longitude, :altitude, :country, :zipcode, :user_id, :size_in_acres, :length_in_feet, :width_in_feet, :created_at, :updated_at
