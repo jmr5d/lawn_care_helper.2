@@ -1,27 +1,38 @@
-<h1>Listing service_types</h1>
-
-<table>
+<%- model_class = ServiceType -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => ServiceType %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @service_types.each do |service_type| %>
       <tr>
+        <td><%= service_type.id %></td>
         <td><%= service_type.name %></td>
         <td><%= service_type.description %></td>
-        <td><%= link_to 'Show', service_type %></td>
-        <td><%= link_to 'Edit', edit_service_type_path(service_type) %></td>
-        <td><%= link_to 'Destroy', service_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l service_type.created_at, format: :long %></td>
+        <td>
+          <%= link_to service_type_path(service_type), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to service_type_path(service_type), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Service type', new_service_type_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_service_type_path,
+            :class => 'btn btn-primary' %>
