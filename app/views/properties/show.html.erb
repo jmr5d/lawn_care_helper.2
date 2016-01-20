@@ -1,69 +1,46 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Property -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Property %></h1>
+</div>
 
-<p>
-  <strong>Address1:</strong>
-  <%= @property.address1 %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:address1) %></dt>
+      <dd><pre class="prettyprint"><%= @property.address1 %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:address2) %></dt>
+      <dd><pre class="prettyprint"><%= @property.address2 %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:city) %></dt>
+      <dd><pre class="prettyprint"><%= @property.city %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:state) %></dt>
+      <dd><pre class="prettyprint"><%= @property.state %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:latitude) %></dt>
+      <dd><pre class="prettyprint"><%= @property.latitude %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:longitude) %></dt>
+      <dd><pre class="prettyprint"><%= @property.longitude %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:altitude) %></dt>
+      <dd><pre class="prettyprint"><%= @property.altitude %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:country) %></dt>
+      <dd><pre class="prettyprint"><%= @property.country %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:zipcode) %></dt>
+      <dd><pre class="prettyprint"><%= @property.zipcode %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:size_in_acres) %></dt>
+      <dd><pre class="prettyprint"><%= @property.size_in_acres %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:length_in_feet) %></dt>
+      <dd><pre class="prettyprint"><%= @property.length_in_feet %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:width_in_feet) %></dt>
+      <dd><pre class="prettyprint"><%= @property.width_in_feet %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Address2:</strong>
-  <%= @property.address2 %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              properties_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_property_path(@property), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              property_path(@property),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>City:</strong>
-  <%= @property.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @property.state %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @property.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @property.longitude %>
-</p>
-
-<p>
-  <strong>Altitude:</strong>
-  <%= @property.altitude %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @property.country %>
-</p>
-
-<p>
-  <strong>Zipcode:</strong>
-  <%= @property.zipcode %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @property.user %>
-</p>
-
-<p>
-  <strong>Size in acres:</strong>
-  <%= @property.size_in_acres %>
-</p>
-
-<p>
-  <strong>Length in feet:</strong>
-  <%= @property.length_in_feet %>
-</p>
-
-<p>
-  <strong>Width in feet:</strong>
-  <%= @property.width_in_feet %>
-</p>
-
-<%= link_to 'Edit', edit_property_path(@property) %> |
-<%= link_to 'Back', properties_path %>

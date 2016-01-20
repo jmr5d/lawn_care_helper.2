@@ -1,28 +1,31 @@
-<h1>Listing properties</h1>
-
-<table>
+<%- model_class = Property -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Property %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Address1</th>
-      <th>Address2</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Altitude</th>
-      <th>Country</th>
-      <th>Zipcode</th>
-      <th>User</th>
-      <th>Size in acres</th>
-      <th>Length in feet</th>
-      <th>Width in feet</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:address1) %></th>
+      <th><%= model_class.human_attribute_name(:address2) %></th>
+      <th><%= model_class.human_attribute_name(:city) %></th>
+      <th><%= model_class.human_attribute_name(:state) %></th>
+      <th><%= model_class.human_attribute_name(:latitude) %></th>
+      <th><%= model_class.human_attribute_name(:longitude) %></th>
+      <th><%= model_class.human_attribute_name(:altitude) %></th>
+      <th><%= model_class.human_attribute_name(:country) %></th>
+      <th><%= model_class.human_attribute_name(:zipcode) %></th>
+      <th><%= model_class.human_attribute_name(:size_in_acres) %></th>
+      <th><%= model_class.human_attribute_name(:length_in_feet) %></th>
+      <th><%= model_class.human_attribute_name(:width_in_feet) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @properties.each do |property| %>
       <tr>
+        <td><%= property.id %></td>
         <td><%= property.address1 %></td>
         <td><%= property.address2 %></td>
         <td><%= property.city %></td>
@@ -32,18 +35,24 @@
         <td><%= property.altitude %></td>
         <td><%= property.country %></td>
         <td><%= property.zipcode %></td>
-        <td><%= property.user %></td>
         <td><%= property.size_in_acres %></td>
         <td><%= property.length_in_feet %></td>
         <td><%= property.width_in_feet %></td>
-        <td><%= link_to 'Show', property %></td>
-        <td><%= link_to 'Edit', edit_property_path(property) %></td>
-        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l property.created_at, format: :long %></td>
+        <td>
+          <%= link_to property_path(property), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to property_path(property), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Property', new_property_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_property_path,
+            :class => 'btn btn-primary' %>
