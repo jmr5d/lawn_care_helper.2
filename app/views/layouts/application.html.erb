@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LawnCareHelper</title>
+  <title>Lawn Care Helper</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 <meta name="viewport" content="width=device-width, initial-scale=1"/></head>
 <body>
-<%= render partial: "elements/navbar" %>
-<%= bootstrap_flash %>
-
-
-<%= yield %>
-
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-offset-0 center-block">
+			<%= render partial: "elements/navbar" %>
+			<%= bootstrap_flash %>
+			<%= yield %>
+		</div>
+	</div>
+</div>
 </body>
 </html>

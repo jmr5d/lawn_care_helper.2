@@ -2,18 +2,28 @@ class PropertiesController < ApplicationController
 
   #->Prelang (scaffolding:rails/scope_to_user)
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
-
+  before_filter :set_zillow_api_id
   before_action :set_property, only: [:show, :edit, :update, :destroy]
 
   # GET /properties
   # GET /properties.json
   def index
-    @properties = Property.all
+    @properties = Property.all.where(:user_id => current_user.id)
   end
 
   # GET /properties/1
   # GET /properties/1.json
   def show
+    concatAddress = @property.address1 + " " + @property.address2
+    concatCity = @property.city + ", " + @property.state + " " + @property.zipcode
+    @zillowProperty = Rubillow::PropertyDetails.deep_search_results({ :address => concatAddress, :citystatezip => concatCity })
+    #zillowPropertyBasics = Rubillow::PropertyDetails.property_basics({ :address => '130 Stewarts Landing Cir', :citystatezip => 'Smyrna, TN 37167' })
+    # @zAddress = Rubillow::PropertyDetails.city
+    # '48749425'
+    # if property.success?
+    #   puts property.price
+    # end
+
   end
 
   # GET /properties/new
@@ -29,7 +39,7 @@ class PropertiesController < ApplicationController
   # POST /properties.json
   def create
     @property = Property.new(property_params)
-    @property.user = current_user
+    @property.user_id = current_user.id           # sets user id for the property record so that it belongs to current user
 
     respond_to do |format|
       if @property.save
@@ -74,6 +84,13 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:address1, :address2, :city, :state, :latitude, :longitude, :altitude, :country, :zipcode, :user_id, :size_in_acres, :length_in_feet, :width_in_feet)
+      params.require(:property).permit(:address1, :address2, :city, :state, :latitude, :longitude, :altitude,
+        :country, :zipcode, :size_in_acres, :user_id)
+    end
+
+    def set_zillow_api_id
+      Rubillow.configure do |configuration|
+        configuration.zwsid = "X1-ZWz1f4ust52vij_86zet"
+      end
     end
 end

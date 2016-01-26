@@ -1,5 +1,13 @@
 source 'https://rubygems.org'
 
+gem 'shoppe'
+
+gem 'rubillow', '~> 0.0.8'
+gem 'rails_12factor', group: :production
+
+# gem 'shoppe', '~> 1.0'
+# gem 'nifty-attachments'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'

@@ -19,6 +19,7 @@
       <th><%= model_class.human_attribute_name(:length_in_feet) %></th>
       <th><%= model_class.human_attribute_name(:width_in_feet) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -39,6 +40,7 @@
         <td><%= property.length_in_feet %></td>
         <td><%= property.width_in_feet %></td>
         <td><%=l property.created_at, format: :long %></td>
+        <td><%= property.user_id %></td>
         <td>
           <%= link_to property_path(property), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>

@@ -32,6 +32,21 @@
   </dl>
 </div>
 
+
+<div>
+  Zestimate: <%= @zillowProperty.price %> <br/>
+  Last Sale: <%= @zillowProperty.last_sold_price %> <br/>
+  Lat: <%= @zillowProperty.address[:latitude] %> <br/>
+  Long: <%= @zillowProperty.address[:longitude] %> <br/>
+  Finished Sqft: <%= @zillowProperty.finished_square_feet %> <br/>
+  Acres: <%= (@zillowProperty.lot_size_square_feet.to_f / 43560).round(2) %> <br/>
+
+</div>
+
+
+
+
+
 <div class="form-group">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               properties_path, :class => 'btn btn-default'  %>
