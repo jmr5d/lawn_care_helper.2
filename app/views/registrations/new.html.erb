@@ -1,0 +1,67 @@
+<div class="page-header" style="text-align: center;">
+  <h1>Get an instant online quote now!</h1>
+</div>
+
+<%= form_for [resource_name, resource.with_properties], :url => registration_path(resource_name), :html => { method: :post } do |f| %>
+<!-- , html: {class: "form-horizontal form-user"} -->
+
+  <%= devise_error_messages! %>
+
+  <div class="form-group center-block" style="max-width: 500px;">
+    <%# f.label :email, class: "control-label col-md-4" %>
+    <!--<div class="col-md-8">-->
+      <%= f.email_field :email, :placeholder => "email@example.com", class: "text-field form-control", html: {spellcheck: "false"} %>
+    <!--</div>-->
+  </div>
+    
+  <div class="form-group center-block" style="max-width: 500px;">
+    <%# f.label :password, class: "control-label col-md-4" %>
+    <!--<div class="col-md-8">-->
+      <%= f.password_field :password, :placeholder => "password", class: "text-field form-control", html: {autocomplete: "off"} %>
+    <!--</div>-->
+  </div>
+
+  <div class="form-group center-block" style="max-width: 500px;">
+    <%# f.label :password_confirmation, "Password Confirmation", class: "control-label col-md-4" %>
+    <!--<div class="col-md-8">-->
+      <%= f.password_field :password_confirmation, :placeholder => "password again", class: "text-field form-control", html: {autocomplete: "off"} %>
+    <!--</div>-->
+  </div>
+
+  <div>
+    <%= f.fields_for :properties do |p| %>
+      <div class="form-group center-block" style="max-width: 500px;">
+        <%= p.text_field :address1, :placeholder => "123 Anystreet St", class: "text-field form-control" %></div>
+      <div class="form-group center-block" style="max-width: 500px;">
+        <%= p.text_field :address2, :placeholder => "Apt 1", class: "text-field form-control" %></div>
+      <div class="form-group center-block" style="max-width: 500px;">
+        <%= p.text_field :city, :placeholder => "San Francisco", class: "text-field form-control" %></div>
+      <div class="form-group center-block" style="max-width: 500px;">
+        <%= p.text_field :state, :placeholder => "CA", class: "text-field form-control" %></div>
+      <div class="form-group center-block" style="max-width: 500px;">
+        <%= p.text_field :zipcode, :placeholder => "90210", class: "text-field form-control" %></div>
+      <div class="form-group center-block" style="max-width: 500px;">
+        <%= p.text_field :size_in_acres, :placeholder => "Acres, such as .5 or .25", class: "text-field form-control"%></div>
+      <%= p.hidden_field :latitude, class: "text-field form-control" %>
+      <%= p.hidden_field :longitude, class: "text-field form-control" %>
+      <!-- <%# p.text_field :altitude, class: "text-field form-control" %> -->
+      <%# p.hidden_field :_destroy %>
+      <%# p.check_box :_destroy %>
+      <%# p.label :_destroy, "Remove" %>
+    <% end %>
+  </div>
+
+
+  <div class="form-group center-block" style="max-width: 500px; text-align: center;">
+    <!--<div class="col-md-offset-4 col-md-8">-->
+      <%= f.submit "See my price >>", class: "btn btn-primary" %>
+    <!--</div>-->
+  </div>
+
+  <div class="form-group center-block" style="max-width: 500px; text-align: center;">
+    <!--<div class="col-md-offset-4 col-md-8">-->
+      <%= render "devise/shared/links" %>
+    <!--</div>-->
+  </div>
+
+<% end %>
